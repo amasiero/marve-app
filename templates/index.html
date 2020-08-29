@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marvel API Connection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {{ fontawesome_html() }}
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand">Marvel API Connection</a>
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Busque seu herói" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </nav>
+        <div class="row row-cols-1 row-cols-md-3">
+        {% for heroi in lista_herois %}
+            <div class="card mb-4 mr-4" style="width: 20rem;">
+              <img src="{{ heroi.get_imagem() }}" class="card-img-top" style="object-fit: cover; height: 20rem;" alt="{{ heroi.get_nome() }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ heroi.get_nome() }}</h5>
+                <p class="card-text">{{ heroi.get_descricao() }}</p>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
